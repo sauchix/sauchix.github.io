@@ -27,4 +27,4 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi, I am Sau Chi, I am currently doing a Masters on Computer Vision, Robotics and Machine Learning
+Hi, I am Sau Chi, I am currently doing a Masters on Computer Vision, Robotics and Machine Learning. I am interested in Computer Vision, machine learning and 3D reconstruction. Currently I am very interested in the 3D model generation field.
