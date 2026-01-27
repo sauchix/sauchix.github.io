@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: Sau Chi T.
 permalink: /
 subtitle:
 
