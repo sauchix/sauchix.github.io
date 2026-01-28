@@ -1,14 +1,14 @@
 ---
 layout: page
 title: GenieEngine
-description: with background image
+description: A RAG + LLM-powered game search engine that combines mathematically precise search algorithms with the reasoning capabilities of an LLM, with a database of over 130000 games (currently all PC games).
 img: assets/img/12.jpg
 importance: 1
-category: work
-related_publications: true
+category: fun
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
+www.geneengine.ai
 
 
 <div class="row">
