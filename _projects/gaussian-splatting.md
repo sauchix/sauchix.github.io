@@ -17,7 +17,7 @@ In this study, I aim to dive into the theory, mathematics and implementation of 
 - Covariance
 - Alpha (How transparent it is)
 
-<b><u>Spherical Harmonics</u></b>
+## Spherical Harmonics
 
 In a 3D gaussian the spherical harmonics coefficients take up almost 80% of the parameters, so it is important for us to understand how these coefficients come. 3DGS doesn't store a single RGB color, instead we want to be able to model the fact that color is a function of the viewing direction. This is where spherical harmonics comes in, a Fourier series function for colors on a sphere:
 $$ f(\theta, \phi) = \sum_{\ell=0}^{L} \sum_{m=-\ell}^{\ell} c_{\ell m} Y_{\ell m}(\theta, \phi) $$

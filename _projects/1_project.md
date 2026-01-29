@@ -8,7 +8,7 @@ category: fun
 related_publications: false
 ---
 
-www.geneengine.ai
+www.genieengine.ai
 
 
 <div class="row">
