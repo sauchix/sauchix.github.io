@@ -11,8 +11,8 @@ category: work
 
 In this study, I aim to dive into the theory, mathematics and implementation of the 3D Gaussian Splatting technique, using the workflow of the original paper Kerbl 2023 (https://arxiv.org/pdf/2308.04079).
 
-3D Gaussian Splatting (3DGS) has revolutionized real-time rendering, as 3D rednering speed from Neural Network Radiance Feild used to take hours to train. 3DGS is a rasterization technique, drawing the 3D points of the real world into 2D points in the projection plane, though the persepctive matrix p' = $\pi$ p. Therefore, a single rasterized Gaussian has these parameters:
-- Color (Spherical Harmonics)
+3D Gaussian Splatting (3DGS) has revolutionized real-time rendering, 3D rednering speed from Neural Radiance Feild used to take hours to train, 3DGS offers real-time performance. 3DGS is a rasterization technique, drawing the 3D points of the real world into 2D points in the projection plane, though a persepctive matrix p' = $\pi$ p. Therefore, a single rasterized Gaussian has these parameters:
+- Color (Spherical Harmonics coefficients)
 - Position
 - Covariance
 - Alpha (How transparent it is)
@@ -60,3 +60,11 @@ $$
 etc...
 
 The $C_{\ell m}$ will be learned paramters from Gaussian training, before combining them with the fixed basis functions Y.
+
+## Initialisation - COLMAP (Incremental SfM)
+
+Before 3DGS starts learning, it needs a sparse point cloud to guess where the objects are. Standard 3DGS uses COLMAP, an incremental Structure-from-Motion pipeline, which is a software wrapper of above, to figure out where the cameras are located when the photos are taken. 
+- Camera Extrinsics & Intrinsics - Locations of the cameras and lens properties
+- Sparse point Clouds - Starting positions x, y, z of the Gaussians centres
+
+COLMAP uses 5-Point RANSAC Algorithm for efficiency to estimate the essential matrix, assuming the cameras are calibrated. This will repeat thousands of times and remove the bad data and outliers.
