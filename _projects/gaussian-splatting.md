@@ -32,13 +32,16 @@ $Y_{\ell m}$ is a set of harmonic patterns which are mathematical constants we c
 In standard 3D Gaussian Splatting, we usually set the maximum degree L to 3. This means we will have 1 + 3 + 5 + 7 = 16 parameters. After doing this for each of R, G, B color channels, we will have in total of 48 spherical harmonics components we need to store to model the colors of the Gaussians, usually more than 80% of the parameters.
 
 $Y_{\ell m}$ are usually represented using angles $\theta$ and $\phi$ 
+
 $$
 Y_{\ell m}(\theta, \phi) = N_{\ell m} P_{\ell}^{|m|}(\cos \theta) e^{im\phi}
 $$
+
 - $N_{\ell m}$ is the Normalisation constant - 
 $$
 N_{\ell m} = \sqrt{\frac{2\ell + 1}{4\pi} \frac{(\ell - |m|)!}{(\ell + |m|)!}}
 $$
+
 - $P_{\ell}^{|m|}(\cos \theta)$ is the Legendre Polynomial that defines the shape along the latitude.
 - $e^{im\phi}$ is the Azimuthal phase that defines the shape along the Longitude.
 
