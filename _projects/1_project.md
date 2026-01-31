@@ -2,7 +2,7 @@
 layout: page
 title: GenieEngine
 description: A RAG + LLM-powered game search engine with over 130000 games (currently all PC games).
-img: assets/img/book_covers/genieengine.jpeg
+img: assets/img/genieengine.jpeg
 importance: 1
 category: fun
 related_publications: false
