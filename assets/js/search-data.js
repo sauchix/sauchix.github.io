@@ -67,7 +67,7 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-genieengine",
           title: 'GenieEngine',
-          description: "A RAG + LLM-powered game search engine that combines mathematically precise search algorithms with the reasoning capabilities of an LLM, with a database of over 130000 games (currently all PC games).",
+          description: "A RAG + LLM-powered game search engine with over 130000 games (currently all PC games).",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
             },},{id: "projects-3d-gaussian-splatting-and-spherical-harmonics-with-implementations",
