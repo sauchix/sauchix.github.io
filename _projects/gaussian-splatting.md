@@ -61,9 +61,11 @@ Y_{1,0}(\theta, \phi) &= \sqrt{\frac{3}{4\pi}} \cos\theta &&\Rightarrow Y_{1,0} 
 Y_{1,1}(\theta, \phi) &= -\sqrt{\frac{3}{4\pi}} \sin\theta \cos\phi &&\Rightarrow Y_{1,1} = -0.4886025119029199 \, x
 \end{aligned}
 $$
+
 etc...
 
 The $C_{\ell m}$ will be learned paramters from Gaussian training, before combining them with the fixed basis functions Y.
+
 
 ## Initialisation - COLMAP (Incremental SfM)
 
