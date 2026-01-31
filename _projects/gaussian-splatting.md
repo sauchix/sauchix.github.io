@@ -42,18 +42,20 @@ $$
 N_{\ell m} = \sqrt{\frac{2\ell + 1}{4\pi} \frac{(\ell - |m|)!}{(\ell + |m|)!}}
 $$
 
-- $P_{\ell}^{|m|}(\cos \theta)$ is the Legendre Polynomial that defines the shape along the latitude.
+- $P_{\ell}^{\|m\|}(\cos \theta)$ is the Legendre Polynomial that defines the shape along the latitude.
 - $e^{im\phi}$ is the Azimuthal phase that defines the shape along the Longitude.
 
 In 3DGS, we can replace these complex terms with cartisian coordinates x, y and z: 
 $$
 x = \sin\theta \cos\phi, \quad y = \sin\theta \sin\phi, \quad z = \cos\theta
 $$
+
 Now each $Y_{\ell m}$ becomes a polynomial in (x,y,z), which will be used in our code implementations to represent our Spherical harmonics.
 
 Degree 0: $$ Y_{0,0}(\theta, \phi) = \sqrt{\frac{1}{4\pi}} \quad \Rightarrow \quad Y_{0,0} = 0.28209479177387814 $$
 
 Degree 1:
+
 $$
 \begin{aligned}
 Y_{1,-1}(\theta, \phi) &= -\sqrt{\frac{3}{4\pi}} \sin\theta \sin\phi &&\Rightarrow Y_{1,-1} = -0.4886025119029199 \, y \\
