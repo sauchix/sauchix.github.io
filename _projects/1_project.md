@@ -1,7 +1,7 @@
 ---
 layout: page
 title: GenieEngine
-description: A RAG + LLM-powered game search engine that combines mathematically precise search algorithms with the reasoning capabilities of an LLM, with a database of over 130000 games (currently all PC games).
+description: A RAG + LLM-powered game search engine with over 130000 games (currently all PC games).
 img: assets/img/book_covers/genieengine.jpeg
 importance: 1
 category: fun
@@ -9,6 +9,7 @@ related_publications: false
 ---
 
 I launched GenieEngine (https://www.genieengine.ai/)
+
 A RAG + LLM-powered game search engine that combines mathematically precise search algorithms with the reasoning capabilities of an LLM, with a database of over 130000 games (currently all PC games).
 
 Mainstream game stores such as Steam, App Store contain hundreds of thousands of games, effectively monopolizing their platforms. However, their game search systems are not so good... failing both the players and developers. In 2025, there are over 19,200 games being released on Steam, but reports indicate that nearly half of these new titles struggle to get even 10 user reviews, effectively launching into a void.
