@@ -23,7 +23,7 @@ In a 3D gaussian the spherical harmonics coefficients take up almost 80% of the 
 $$ f(\theta, \phi) = \sum_{\ell=0}^{L} \sum_{m=-\ell}^{\ell} c_{\ell m} Y_{\ell m}(\theta, \phi) $$
 - f models view-dependent color
 - $Y_{\ell m}$ is a set of patterns - fixed orthonormal basis functions on the unit sphere
-- $C_{\ell m}$ are coefficients that weight the $Y_{\ell m} 
+- $C_{\ell m}$ are coefficients that weight the $Y_{\ell m}$
 
 In Gaussian Splatting, we need to learn the coefficients of each coefficients for each Gaussian.
 
