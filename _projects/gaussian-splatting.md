@@ -52,6 +52,7 @@ $$
 Now each $Y_{\ell m}$ becomes a polynomial in (x,y,z), which will be used in our code implementations to represent our Spherical harmonics.
 
 Degree 0: $$ Y_{0,0}(\theta, \phi) = \sqrt{\frac{1}{4\pi}} \quad \Rightarrow \quad Y_{0,0} = 0.28209479177387814 $$
+
 Degree 1:
 $$
 \begin{aligned}
