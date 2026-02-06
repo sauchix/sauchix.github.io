@@ -97,3 +97,11 @@ $$
 ## Optimization - Forward and Backward Procedure
 
 As we mentioned 3DGS are differentiable representation, we can use backpropagation to train, and the optimzation is further improved by interleaving with adaptive density control steps which include cloning, splitting and removal. The goal is to allow high quality novel view synthesis for the end result. 
+
+During Forward Pass we need to project 3D Gaussians to 2D for rendering [Zwicker 2001], given viewing transformation W, the 2D covariance matrix $\Sigma'$ in camera coordinates is
+
+$$
+\Sigma' = JW \Sigma W^T J^T
+$$
+
+- J is the Jacobian 
