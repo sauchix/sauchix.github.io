@@ -305,4 +305,28 @@ To remove floaters close to the cameras, we reset the $\alpha$ values of all Gau
 
 One of the reason why Kerbl's 3D Gaussian splatting is so fast compare to previous methods, is the fast differentiable tile-based rasterizer they implemented, which allows fast rednering and sorting to approximate $\alpha$-blending. This was inspired by previous work [Lassner and Zollhofer 2021].
 
-This a fully differentiable alpha-blending pass, starting off by splitting the screen into 16x16 pixel tiles, it checks if a 3D Gaussian is inside the view frustum (camera's field of view). A list of splats 
+This a fully differentiable alpha-blending pass, starting off by splitting the screen into 16x16 pixel tiles, it checks if a 3D Gaussian is inside the view frustum (camera's field of view). A list of splats are created per tile by instantiating each splat in each 16x16 tile it overlaps, which will first cause a moderate increase in the number of Gaussians.
+
+$\underline{\textbf{Radix Sort}}$
+
+Next we assign key for each splat's instance with up to 64 bits, where the higher 32 bits encode the index of the overlapped tile - the tile index. The lower 32 bits encode the projected depth. Note that if a Gaussian overlaps multiple tiles, it will recorded as multiple instances and each instance recieve a unique key. The sorting process will first organize which tile/tiles is each Gaussian in then it looks at the lower bits to sort each Gaussian in their respective tile from cloest to the camera to further away. This is called a Radix sort, which is much more efficient for CUDA programming as it's complexity becomes $O(n)$ instead of $O(nlogn)$ like QuickSort. The exact size of the index depends on the resolution.
+
+Early exit can be applied from the results of Radix sort giving a front-to-back ordering. As we rasterize a pixel, we keep track of the accumulated transmittance $T$:
+
+$$
+C = \sum_{i=1}^{n} c_i \alpha_i T_i \quad \text{where} \quad T_i = \prod_{j=1}^{i-1} (1 - \alpha_j)
+$$
+
+where:
+
+- $C$ is the final pixel color after blending all the overlapping 3D Gaussians
+- $c_i$ is the color of the $i$-th Gaussian in the depth ordering, derived from Spherical Harmonics
+- $\alpha$ is the opacity of the $i$-th Gaussian
+- $T_i$ is the Transmittance, the "visibility" remaining for the $i$-th Gaussian. How much light can still be pass through to reach this pixel
+
+By sorting Gaussians in $\alpha$ and keeping track of accumulated transmittance, the renderer can stop processing further Gaussians when the accumulated opacity reaches 99.9%. This significally reduces the number of calculations, especially in high-depth scenes.
+
+After sorting, we identify the start and end ranges in the sorted array with the same tile ID. Done in parallel, launching one thread per 64-bit array element comparing the higher 32 bits which is the tile ID with its neighbors. Compare to previous methods, Kerbl's method removes sequential primitive processing, every Gaussian is treated as an independent piece of data. They are also "move compact per-tile lists", meaning for each tile it only contains the Gaussians that actually contributed to those pixels.
+
+
+This is the end of the article, hopefully it helps anyone who is also studying in this field ^^
