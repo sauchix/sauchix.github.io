@@ -5,13 +5,14 @@ description: A deep dive into the math of splattin.
 img: 
 importance: 1
 category: work
+bibliography: papers.bib
 ---
 
 ## Introduction
 
 In this study, I aim to dive into the theory and mathematics of the 3D Gaussian Splatting technique, using the main implementations from the original gaussian splatting paper [Kerbl 2023].
 
-3D Gaussian Splatting (3DGS) has revolutionized real-time rendering, rednering speed from Neural Radiance Feild used to take hours to train, while 3DGS offers real-time performance. 3DGS is a rasterization technique, drawing the 3D points of the real world into 2D points in the projection plane, though a persepctive matrix p' = $\pi$ p (Jacobian matrix J is used in 3DGS instead for a linear approximation of camera projection). Therefore, a single rasterized Gaussian has these parameters:
+3D Gaussian Splatting (3DGS) has revolutionized real-time rendering, rednering speed from Neural Radiance Feild used to take hours to train, while 3DGS offers real-time performance. 3DGS is a rasterization technique, drawing the 3D points of the real world into 2D points in the projection plane, though a persepctive matrix p' = $\pi$ p (Jacobian matrix J is used in 3DGS instead for a linear approximation of camera projection). Therefore, a single rasterized Gaussian has these parameters {% cite huggingface_3dgs %}:
 - Color (Spherical Harmonics coefficients)
 - Position
 - Covariance
@@ -330,3 +331,8 @@ After sorting, we identify the start and end ranges in the sorted array with the
 
 
 This is the end of the article, hopefully it helps anyone who is also studying in this field ^^
+
+## References
+
+{% bibliography --cited %}
+
