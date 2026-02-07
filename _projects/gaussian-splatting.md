@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 3D Gaussian Splatting and Spherical Harmonics with Implementations
+title: 3D Gaussian Splatting Maths and Theory
 description: A deep dive into the math of splattin.
 img: 
 importance: 1
