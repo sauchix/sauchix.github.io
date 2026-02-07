@@ -122,7 +122,9 @@ Backpropagation - The goal is to find how the change of 3D scaling s or 3D rotat
 $$
 \frac{d\Sigma'}{ds} = \frac{d\Sigma'}{d\Sigma} \frac{d\Sigma}{ds}
 $$
+
 and 
+
 $$
 \frac{d\Sigma'}{dq} = \frac{d\Sigma'}{d\Sigma} \frac{d\Sigma}{dq}
 $$
@@ -136,6 +138,7 @@ Let U = JW, we get $\Sigma' = U \Sigma U^T$, combining the viewing trnasformatio
 $\Sigma'$ is the symmetric upper left 2x2 matrix of $U \Sigma U^T$. Since it is symmetric, the off-diagonal elements of the 2x2 matrix are the same, so it reduces the computational calculations from 4 to 3 unique multiplications $U_{1,i} U_{1,j}, U_{1,i} U_{2,j} and U_{2,i} U_{2,j}$.
 
 We can find the partial derivatives 
+
 $$
 \frac{\partial \Sigma'}{\partial \Sigma_{i,j}} = \begin{bmatrix} 
 U_{1,i} U_{1,j} & U_{1,i} U_{2,j} \\
@@ -152,10 +155,13 @@ Since $\Sigma = RSS^{T} R^{T}$, let M = RS and $\Sigma = MM^T$
 $$
 \frac{d\Sigma}{ds} = \frac{d\Sigma}{dM} \frac{dM}{ds}
 $$
+
 and 
+
 $$
 \frac{d\Sigma}{dq} = \frac{d\Sigma}{dM} \frac{dM}{dq}
 $$
+
 Since covariance $\Sigma$ is symmetric, $\frac{d\Sigma}{dM} = 2M^T$, the derivative is essentially 2M.
 
 For $\frac{dM}{ds}$, $M = RS$
@@ -170,7 +176,9 @@ S_x & 0 & 0 \\
 0 & S_y & 0 \\
 0 & 0 & S_z
 \end{bmatrix}}_{\text{Scaling } S}$$
+
 Therefore:
+
 $$
 M = \begin{bmatrix}
 R_{11} S_x & R_{12} S_y & R_{13} S_z \\
@@ -182,9 +190,11 @@ $$
 As we can see $S_x$ only appears in the first column and have no effects on the second or the third column. 
 
 For $j = k$ (e.g. how $S_x$ changes $R_{11} S_x$):
+
 $$
 \frac{\partial M_{ij}}{\partial S_k} = R_{ik}
 $$
+
 $\frac{\partial M_{ij}}{\partial S_k}$ means how much does value of Row i, Column j of M changes if I change $S_x$.
 
 If $j = k$, $\frac{\partial M_{ij}}{\partial S_k}$ derivative is just the rotation value at the spot $R_{i,k}$. 
@@ -192,6 +202,7 @@ If $j = k$, $\frac{\partial M_{ij}}{\partial S_k}$ derivative is just the rotati
 Otherwise the derivative $\frac{\partial M_{ij}}{\partial S_k}$ is 0 as we see in the example $S_x$ does nothing to different columns.
 
 Therefore: 
+
 $$\frac{\partial M_{i,j}}{\partial s_k} = \begin{cases} 
 R_{i,k} & \text{if } j = k \\ 
 0 & \text{otherwise} 
@@ -247,7 +258,9 @@ During forward pass, we perform a L2 normalization to the 4D quaternion vector q
 $$
 \hat{q} = \frac{q}{\|q\|}
 $$
+
 where 
+
 $$
 \|q\| = \sqrt{q_r^2 + q_i^2 + q_j^2 + q_k^2}
 $$
@@ -266,7 +279,30 @@ Kerbl uses Stochastic Gradient descent technique for the optimzation process, wh
 - Colors(SH)
 
 The loss function $L_1$ is given:
-$$ L = (1-\lambda)L_1 + \lambda L_{D-SSIM}
+
+$$ 
+L = (1-\lambda)L_1 + \lambda L_{D-SSIM}
+$$
 
 - where SSIM stands for Structural Similarity Index, which mimics how humans see, emphasing more on structure, contrast and texture instead of perfect pixels. In all of Kerbl's tests $\lambda$ is set as 0.2
 - $L_1$ is the absolute difference between color of pixel in the rendered image and the pixel of the original photo
+
+For the learning rate for the training in Gaussians' positions, Exponential Decay is used to move them into their final, perfect position. Starting with a large learning rate to help the system converge, and the step size gradually shrinks to ensure the Gaussians make tiny position adjustments into their final pixel postiions
+
+## Adative Density Control
+
+Starting with an initial sparse scene from SfM, the goal is to grow into denser Gaussian sets to better represent the scene. Kerbl used a method called Adaptive Density Control interleaved during the optimization process.
+
+Kerbl first performed a 100-iteration warm up period, then it performs a clean up where Gaussians with $\alpha$ less than the threshold $\epsilon_ \alpha$ get removed (as they are essentially transparent). This culling process helps to keep the scene efficient, and improve computations so that the GPU doesn't have to spend resources calculating its position, shape and sorting.
+
+ADC will focus on regions with missing geometric features (under-reconstruction), but also regions where Gaussians cover large areas in the scene (over-reconstruction). Kerbl's paper observes that both of these regions have large view-space positional gradients, where in under-reconstruction region nearby Gaussian is desperately being pulled into the empty void to fill the gap. While in over-reconstruction region, the giant Gaussian is being moved back and forth aggressively to try make the image looks sharp.
+
+In Kerbl's tests, they decided to densify Gaussians with average magnitude of view-space position gradients above the threshold $\tau_{pos}$ of 0.0002. For under-reconstructed regions, they simply clone the small Gaussians of the same size, and moving them towards the direction of positional  gradient. For over-reconstructed regions, giant Gaussians are replaced by smaller Gaussians, dividing their scale by factor of $\phi = 1.6$ (Kerbl determined experimentally).
+
+To remove floaters close to the cameras, we reset the $\alpha$ values of all Gaussians to almost zero every N=3000 iterations. This tricks the loss function to help removing unneeded Gaussians, as the loss function will increase $\alpha$ aggressively for objects' Gaussians that are needed, while Gaussians with $\alpha$ less than $\epsilon_ \alpha$ will be pruned repeatedly. 
+
+## Tile-based rasterizer
+
+One of the reason why Kerbl's 3D Gaussian splatting is so fast compare to previous methods, is the fast differentiable tile-based rasterizer they implemented, which allows fast rednering and sorting to approximate $\alpha$-blending. This was inspired by previous work [Lassner and Zollhofer 2021].
+
+This a fully differentiable alpha-blending pass, starting off by splitting the screen into 16x16 pixel tiles, it checks if a 3D Gaussian is inside the view frustum (camera's field of view). A list of splats 
