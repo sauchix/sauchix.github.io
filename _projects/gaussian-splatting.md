@@ -10,7 +10,7 @@ bibliography: papers.bib
 
 ## Introduction
 
-In this study, I aim to dive into the theory and mathematics of the 3D Gaussian Splatting technique, using the main implementations from the original gaussian splatting paper [Kerbl 2023].
+In this study, I aim to dive into the theory and mathematics of the 3D Gaussian Splatting technique, using the main implementations from the original gaussian splatting paper {% cite kerbl20233dgs %}.
 
 3D Gaussian Splatting (3DGS) has revolutionized real-time rendering, rednering speed from Neural Radiance Feild used to take hours to train, while 3DGS offers real-time performance. 3DGS is a rasterization technique, drawing the 3D points of the real world into 2D points in the projection plane, though a persepctive matrix p' = $\pi$ p (Jacobian matrix J is used in 3DGS instead for a linear approximation of camera projection). Therefore, a single rasterized Gaussian has these parameters {% cite huggingface_3dgs %}:
 - Color (Spherical Harmonics coefficients)
@@ -22,7 +22,7 @@ In this study, I aim to dive into the theory and mathematics of the 3D Gaussian 
 
 ## Spherical Harmonics
 
-In a 3D gaussian the spherical harmonics coefficients take up almost 80% of the parameters, so it is important for us to understand how these coefficients come. 3DGS doesn't store a single RGB color, instead we want to be able to model the fact that color is a function of the viewing direction. This is where spherical harmonics comes in, a Fourier series function for colors on a sphere:
+In a 3D gaussian the spherical harmonics coefficients take up almost 80% of the parameters {% cite papers100lines_sh %}, so it is important for us to understand how these coefficients come. 3DGS doesn't store a single RGB color, instead we want to be able to model the fact that color is a function of the viewing direction. This is where spherical harmonics comes in, a Fourier series function for colors on a sphere:
 $$ f(\theta, \phi) = \sum_{\ell=0}^{L} \sum_{m=-\ell}^{\ell} c_{\ell m} Y_{\ell m}(\theta, \phi) $$
 - f models view-dependent color
 - $Y_{\ell m}$ is a set of patterns - fixed orthonormal basis functions on the unit sphere
@@ -76,7 +76,7 @@ The $C_{\ell m}$ will be learned paramters from Gaussian training, before combin
 
 ## Initialisation - COLMAP (Incremental SfM)
 
-Before 3DGS starts learning, it needs a sparse point cloud to guess where the objects are, produced by a set of images of a static scene with corresponding cameras calibrated by SfM (Structure from Motion). Standard 3DGS uses COLMAP, an incremental Structure-from-Motion pipeline, which is a software wrapper of above, to figure out where the cameras are located when the photos are taken. 
+Before 3DGS starts learning, it needs a sparse point cloud to guess where the objects are, produced by a set of images of a static scene with corresponding cameras calibrated by SfM (Structure from Motion). Standard 3DGS uses COLMAP {% cite schoenberger2016sfm %}, an incremental Structure-from-Motion pipeline, which is a software wrapper of above, to figure out where the cameras are located when the photos are taken. 
 - Camera Extrinsics & Intrinsics - Locations of the cameras and lens properties
 - Sparse point Clouds - Starting positions x, y, z of the Gaussians centres
 
@@ -84,7 +84,7 @@ COLMAP uses 5-Point RANSAC Algorithm for efficiency to estimate the essential ma
 
 From these points, we create a set of 3D Gaussians defined by position(mean, $\mu$), covariance matrix ($\Sigma$), opacity ($\alpha$) and component color which is the spherical harmonics we mentioned(SH).
 
-Gaussians basis function also defines the intensity with a full 3D covariance matrix $\Sigma$ defined in the world space [Zwicker 2001] centered at point $\mu$. This Gaussian is multiplied by $\alpha$ during the blending process.
+Gaussians basis function also defines the intensity with a full 3D covariance matrix $\Sigma$ defined in the world space {% cite zwicker2001surface %} centered at point $\mu$. This Gaussian is multiplied by $\alpha$ during the blending process.
 
 $$
 G(x) = e^{-\frac{1}{2} x^T \Sigma^{-1} x}
@@ -100,7 +100,7 @@ $$
 
 As I mentioned 3DGS are differentiable representation, we can use backpropagation to train, and the optimzation is further improved by interleaving with adaptive density control steps which include cloning, splitting and removal. The goal is to allow high quality novel view synthesis for the end result. 
 
-During Forward Pass we need to project 3D Gaussians to 2D for rendering [Zwicker 2001], given viewing transformation W, the 2D covariance matrix $\Sigma'$ in camera coordinates is
+During Forward Pass we need to project 3D Gaussians to 2D for rendering {% cite zwicker2001surface %}, given viewing transformation W, the 2D covariance matrix $\Sigma'$ in camera coordinates is
 
 $$
 \Sigma' = JW \Sigma W^T J^T
@@ -213,7 +213,7 @@ Gradients for rotation $\frac{dM}{dq}$:
 
 Recall quaternion is a way to represent 3D rotation using four numbers ($q_r, q_i, q_j, q_k$) instead of a 3x3 matrix. Its advantage is that it solves the Gimbal lock problem. Quaternions never lock up and allow Gaussians to rotate smoothly in any directions. Using quaternions let us nudge the four numbers slightly during optmization, as long as we normalise them, the result will always be a perfectly valid, clean rotation.
 
-A unit quaternion q with real part $q_r$, and imaginary parts $q_i, q_j, q_k$ for a rotation matrix R (https://danceswithcode.net/engineeringnotes/quaternions/quaternions.html):
+A unit quaternion q with real part $q_r$, and imaginary parts $q_i, q_j, q_k$ for a rotation matrix R {% cite rose2015quaternions %}:
 
 $$R(q) = \begin{bmatrix}
 1 - 2(q_j^2 + q_k^2) & 2(q_i q_j - q_r q_k) & 2(q_i q_k + q_r q_j) \\
@@ -331,6 +331,8 @@ After sorting, we identify the start and end ranges in the sorted array with the
 
 
 This is the end of the article, hopefully it helps anyone who is also studying in this field ^^
+
+A special thanks to the amazing youtube channel - Papers in 100 Lines of Code (https://www.youtube.com/@papersin100linesofcode/videos) with his amazing in depth videos in computer vision and neural networks.
 
 ## References
 
