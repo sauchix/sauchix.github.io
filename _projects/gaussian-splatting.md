@@ -334,6 +334,11 @@ This is the end of the article, hopefully it helps anyone who is also studying i
 
 A special thanks to the amazing youtube channel - Papers in 100 Lines of Code (https://www.youtube.com/@papersin100linesofcode/videos) with his amazing in depth videos in computer vision and neural networks.
 
+
+## Citation
+> **Sau Chi Tang.** (2026). *3D Gaussian Splatting Maths and Theory*. Sau Chi's Blog. https://sauchix.github.io/projects/gaussian-splatting/#huggingface_3dgs
+
+
 ## References
 
 {% bibliography --cited %}
