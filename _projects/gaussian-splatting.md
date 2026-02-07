@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 3D Gaussian Splatting Maths and Theory
+title: 3D Gaussian Splatting - Maths and Theory (Spherical Harmonics, Backpropagation etc...)
 description: A deep dive into the math of splattin.
 img: assets/img/3dgsimg.png
 importance: 1
