@@ -12,13 +12,13 @@ bibliography: papers.bib
 
 In this study, I aim to dive into the theory and mathematics of the 3D Gaussian Splatting technique, using the main implementations from the original gaussian splatting paper {% cite kerbl20233dgs %}.
 
-3D Gaussian Splatting (3DGS) has revolutionized real-time rendering, rednering speed from Neural Radiance Feild used to take hours to train, while 3DGS offers real-time performance. 3DGS is a rasterization technique, drawing the 3D points of the real world into 2D points in the projection plane, though a persepctive matrix p' = $\pi$ p (Jacobian matrix J is used in 3DGS instead for a linear approximation of camera projection). Therefore, a single rasterized Gaussian has these parameters {% cite huggingface_3dgs %}:
+3D Gaussian Splatting (3DGS) has revolutionized real-time rendering, rednering speed from Neural Radiance Field used to take hours to train, while 3DGS offers real-time performance. 3DGS is a rasterization technique, drawing the 3D points of the real world into 2D points in the projection plane, though a perspective matrix p' = $\pi$ p (Jacobian matrix J is used in 3DGS instead for a linear approximation of camera projection). Therefore, a single rasterized Gaussian has these parameters {% cite huggingface_3dgs %}:
 - Color (Spherical Harmonics coefficients)
 - Position
 - Covariance
 - Alpha (How transparent it is)
 
-3DGS are differentiable volumentric representation, which we can use backpropagation to train, as opposed to traditional geometry like meshes and point clouds.
+3DGS are differentiable volumetric representation, which we can use backpropagation to train, as opposed to traditional geometry like meshes and point clouds.
 
 ## Spherical Harmonics
 
