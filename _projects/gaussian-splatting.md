@@ -336,7 +336,7 @@ A special thanks to the amazing youtube channel - Papers in 100 Lines of Code (h
 
 
 ## Citation
-> **Sau Chi Tang.** (2026). *3D Gaussian Splatting Maths and Theory*. Sau Chi's Blog. https://sauchix.github.io/projects/gaussian-splatting/#huggingface_3dgs
+> **Sau Chi Tang.** (2026). *3D Gaussian Splatting Maths and Theory*. Sau Chi's Blog. https://sauchix.github.io/projects/gaussian-splatting/
 
 
 ## References
