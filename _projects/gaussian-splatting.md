@@ -113,9 +113,11 @@ $$
 The result $\Sigma'$ will still be a 3x3 matrix, skipping the third row and column of $\Sigma'$, we obtain the 2x2 variance matrix for the 2D ellipse we want to be projected.
 
 During optimization, $\Sigma$ must be postive semi-definite to have phyiscal meaning (it can't have negative width). Therefore we always store the covariance matrix  $\Sigma$ of a 3D Gaussian with a scaling matrix S and rotation matrix R:
+
 $$ 
 \Sigma = RSS^{T} R^{T}
 $$
+
 The squared of the scale matrix ($SS^{T}$) ensures it is always positive. Kerbl also uses quaterions q - 4-number way to represent 3D rotation, while making sure q is normalised to obtain valid unit quaternion. The formulation also represents an aniotropic covariance, as the 3D Gaussian can have different 'spreads' along different axes. This allows the 3D Gaussians to adapt to geometry of different shapes of different scenes.
 
 Backpropagation - The goal is to find how the change of 3D scaling s or 3D rotation q affects the shape of the 2D ellipse. We can apply chain rule to find the derivatives of scaling and rotation:
