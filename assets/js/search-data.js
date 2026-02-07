@@ -70,8 +70,8 @@ ninja.data = [{
           description: "A RAG + LLM-powered game search engine with over 130000 games (currently all PC games).",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-3d-gaussian-splatting-maths-and-theory",
-          title: '3D Gaussian Splatting Maths and Theory',
+            },},{id: "projects-3d-gaussian-splatting-maths-and-theory-spherical-harmonics-backpropagation-etc",
+          title: '3D Gaussian Splatting - Maths and Theory (Spherical Harmonics, Backpropagation etc...)',
           description: "A deep dive into the math of splattin.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/gaussian-splatting/";
