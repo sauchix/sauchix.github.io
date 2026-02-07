@@ -237,7 +237,7 @@ R_{31} S_x & R_{32} S_y & R_{33} S_z
 \end{bmatrix}
 $$
 
-$$R(q) = 2\begin{bmatrix}
+$$M = 2\begin{bmatrix}
 (\frac{1}{2} - q_j^2 - q_k^2)S_x & (q_i q_j - q_r q_k)S_y & (q_i q_k + q_r q_j)S_z \\
 (q_i q_j + q_r q_k)S_x & (\frac{1}{2} - q_i^2 - q_k^2)S_y & (q_j q_k - q_r q_i)S_z \\
 (q_i q_k - q_r q_j)S_x & (q_j q_k + q_r q_i)S_y & (\frac{1}{2} - q_i^2 - q_j^2)S_z
