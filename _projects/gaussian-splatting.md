@@ -2,7 +2,7 @@
 layout: page
 title: 3D Gaussian Splatting Maths and Theory
 description: A deep dive into the math of splattin.
-img: assets/img/3dgs.png
+img: assets/img/3dgsimg.png
 importance: 1
 category: work
 bibliography: papers.bib
