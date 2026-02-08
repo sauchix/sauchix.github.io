@@ -329,7 +329,7 @@ where:
 
 By sorting Gaussians in $\alpha$ and keeping track of accumulated transmittance, the renderer can stop processing further Gaussians when the accumulated opacity reaches 99.9%. This significally reduces the number of calculations, especially in high-depth scenes.
 
-After sorting, we identify the start and end ranges in the sorted array with the same tile ID. Done in parallel, launching one thread per 64-bit array element comparing the higher 32 bits which is the tile ID with its neighbors. Compare to previous methods, Kerbl's method removes sequential primitive processing, every Gaussian is treated as an independent piece of data. They are also "move compact per-tile lists", meaning for each tile it only contains the Gaussians that actually contributed to those pixels.
+After sorting, we identify the start and end ranges in the sorted array with the same tile ID. Done in parallel, launching one thread per 64-bit array element comparing the higher 32 bits which is the tile ID with its neighbors. Compare to previous methods, Kerbl's method removes sequential primitive processing, every Gaussian is treated as an independent piece of data. They are also "more compact per-tile lists", meaning for each tile it only contains the Gaussians that actually contributed to those pixels.
 
 
 This is the end of the article, hopefully it helps anyone who is also studying in this field ^^
@@ -338,7 +338,7 @@ A special thanks to the amazing youtube channel - Papers in 100 Lines of Code (h
 
 
 ## Citation
-> **Sau Chi Tang.** (2026). *3D Gaussian Splatting Maths and Theory*. Sau Chi's Blog. https://sauchix.github.io/projects/gaussian-splatting/
+> **Sau Chi Tang.** (Feb 2026). *3D Gaussian Splatting Maths and Theory*. Sau Chi's Blog. https://sauchix.github.io/projects/gaussian-splatting/
 
 
 ## References
