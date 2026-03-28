@@ -1,6 +1,6 @@
 ---
 layout: about
-title: Sau Chi Tang
+title: Sau Chi
 permalink: /
 subtitle:
 
@@ -27,4 +27,5 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi, I am Sau Chi, I am currently doing a Masters on Computer Vision, Robotics and Machine Learning. I am interested in Computer Vision, machine learning and 3D reconstruction, especially in the 3D model generation field.
+Hi, I am Sau Chi. My interest lies at the intersection between Computer graphics, Machine Learning and Mathematics. I am interested in doing further research in specfically the 3D generation generation field including feed-forward 3D primitive networks such as Triangle/Gaussian Splatting/Ray splatting, Diffusion etc.
+
