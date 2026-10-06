@@ -9,22 +9,29 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-research-amp-projects",
-          title: "Research &amp; Projects",
-          description: "My research work and projects :)",
+  },{id: "nav-research-amp-blogs",
+          title: "Research &amp; Blogs",
+          description: "My research work and blogs :)",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "post-3d-gaussian-splatting-and-spherical-harmonics",
+        },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "post-3d-gaussian-splatting-and-spherical-harmonics-maths-and-theory-spherical-harmonics-backpropagation",
         
-          title: "3D Gaussian Splatting and Spherical Harmonics",
+          title: "3D Gaussian Splatting and Spherical Harmonics - Maths and Theory (Spherical Harmonics, Backpropagation)...",
         
-        description: "Introduction and implementation of 3D Gaussian Splatting and Spherical Harmonics",
+        description: "A deep dive into the math of splatting.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2026/3DGS/";
+            window.location.href = "/blog/2026/3d-gaussian-splatting/";
           
         },
       },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
@@ -70,11 +77,6 @@ ninja.data = [{
           description: "A RAG + LLM-powered game search engine with over 130000 games (currently all PC games).",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-3d-gaussian-splatting-maths-and-theory-spherical-harmonics-backpropagation-etc",
-          title: '3D Gaussian Splatting - Maths and Theory (Spherical Harmonics, Backpropagation etc...)',
-          description: "A deep dive into the math of splattin.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/gaussian-splatting/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
