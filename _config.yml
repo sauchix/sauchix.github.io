@@ -261,7 +261,7 @@ jekyll-archives:
   books:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
-display_tags: ["3d gaussian splatting"]
+display_tags: ["3d gaussian splatting, video games, generations"]
 display_categories: ["research"]
 
 # -----------------------------------------------------------------------------
