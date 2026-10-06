@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Research & Projects
+title: Research & Blogs
 permalink: /projects/
-description: My research work and projects :)
+description: My research work and blogs :)
 nav: true
 nav_order: 3
-display_categories: [work, fun]
+display_categories: [fun]
 horizontal: false
 ---
 

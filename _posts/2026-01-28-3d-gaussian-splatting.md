@@ -1,12 +1,15 @@
 ---
-layout: page
-title: 3D Gaussian Splatting - Maths and Theory (Spherical Harmonics, Backpropagation etc...)
-description: A deep dive into the math of splattin.
-img: assets/img/3dgsimg.png
-importance: 1
-category: work
+layout: post
+title: 3D Gaussian Splatting and Spherical Harmonics - Maths and Theory (Spherical Harmonics, Backpropagation)
+date: 2026-01-28 17:37:00
+description: A deep dive into the math of splatting.
+tags: [3d gaussian splatting, math]
+categories: research
+thumbnail: assets/img/3dgsimg.png
 bibliography: papers.bib
 ---
+
+
 
 ## Introduction
 
@@ -338,10 +341,9 @@ A special thanks to the amazing youtube channel - Papers in 100 Lines of Code (h
 
 
 ## Citation
-> **Sau Chi Tang.** (Feb 2026). *3D Gaussian Splatting Maths and Theory*. Sau Chi's Blog. https://sauchix.github.io/projects/gaussian-splatting/
+> **Sau Chi Tang.** (Feb 2026). *3D Gaussian Splatting Maths and Theory*. Sau Chi's Blog. https://sauchix.github.io/blog/2026/3d-gaussian-splatting/
 
 
 ## References
 
 {% bibliography --cited %}
-
