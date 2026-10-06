@@ -5,7 +5,7 @@ date: 2025-12-27 12:00:00
 description: A RAG + LLM-powered game search engine with over 130000 games (currently all PC games).
 tags: [genieengine, llm, rag]
 categories: projects
-thumbnail: assets/img/genieengine.jpeg
+thumbnail: assets/img/genieengine.jpg
 ---
 
 I launched GenieEngine (https://www.genieengine.ai/)
