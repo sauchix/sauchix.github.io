@@ -27,5 +27,4 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi, I am Sau Chi. My interest lies at the intersection between Computer graphics, Machine Learning and Mathematics. I am interested in doing further research in specfically the 3D generation generation field including feed-forward 3D primitive networks such as Triangle/Gaussian Splatting/Ray splatting, Diffusion etc.
-
+My name is Sau Chi. I believe my interest lies at the intersection between Computer vision, deep Learning and Mathematics. I am currently very interested and has been actively researching on 3D vision, Inverse graphics, Deep learning, Graphs and Geometric Deep Learning.
